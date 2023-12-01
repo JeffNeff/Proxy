@@ -18,21 +18,12 @@ func main() {
 	// export KEY_PATH=
 	kp := os.Getenv("KEY_PATH")
 
-	if vs == "" {
-		vs = "34.125.87.222:22"
-	}
-	if kp == "" {
-		kp = "/Users/jeffreynaef/.ssh/id_rsa"
-	}
 
 	sshClient, err := connectSSH(vs, kp)
 	if err != nil {
 		panic(err)
 	}
-	// sshClient, err := connectSSH("34.125.87.222:22", "/Users/jeffreynaef/.ssh/id_rsa")
-	// if err != nil {
-	// 	panic(err)
-	// }
+
 	defer sshClient.Close()
 
 	fmt.Println("ssh client connected")
